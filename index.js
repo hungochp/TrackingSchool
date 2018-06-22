@@ -26,6 +26,11 @@ io.on('connection', function(clientSocket) {
     console.log('followBusNumber: ' + busNumber);
 
     var userList = busUserList[busNumber]
+    for (var i=0; i<userList.length; i++) {
+      if (userList[i]["id"] == clientSocket.id) {
+        userList.splice(i, 1);
+      }
+    }
     var userInfo = {};
     userInfo["id"] = clientSocket.id;
     userInfo["bus_number"] = busNumber;
